@@ -1,0 +1,38 @@
+# Signal Stack Dependencies
+# Python 3.11+
+
+# Web Framework & API
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# Database & ORM
+sqlmodel>=0.0.22
+
+# HTTP & Web Crawling / Extraction
+httpx>=0.27.0
+trafilatura>=1.12.0
+feedparser>=6.0.11
+duckduckgo_search>=7.0.0
+pypdf>=5.0.0
+
+# Data Processing
+pandas>=2.2.0
+openpyxl>=3.1.0
+
+# LLM Providers (Free Tier)
+google-genai>=0.1.1
+groq>=0.11.0
+
+# UI
+streamlit>=1.39.0
+
+# Scheduling & Utilities
+apscheduler>=3.10.4
+python-dotenv>=1.0.1
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+tenacity>=9.0.0
+
+# Testing
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
