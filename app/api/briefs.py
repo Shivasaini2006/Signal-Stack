@@ -1,5 +1,6 @@
 from typing import List, Dict, Any, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
+from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from app.core import db
@@ -7,6 +8,36 @@ from app.models.entities import Company, Brief, Action
 from app.services.brief import generate_weekly_brief, verify_brief_claims
 
 router = APIRouter(tags=["Executive Briefing"])
+
+
+class ActionUpdatePayload(BaseModel):
+    status: Optional[str] = None
+    owner: Optional[str] = None
+    priority: Optional[str] = None
+
+
+@router.patch("/actions/{action_id}")
+def update_action_status(
+    action_id: int,
+    payload: ActionUpdatePayload,
+    session: Session = Depends(db.get_session),
+):
+    """Update action item status (open, in_progress, completed, dismissed)."""
+    action = session.get(Action, action_id)
+    if not action:
+        raise HTTPException(status_code=404, detail="Action not found")
+
+    if payload.status:
+        action.status = payload.status
+    if payload.owner:
+        action.owner = payload.owner
+    if payload.priority:
+        action.priority = payload.priority
+
+    session.add(action)
+    session.commit()
+    session.refresh(action)
+    return action
 
 
 @router.post("/companies/{company_id}/briefs/generate")

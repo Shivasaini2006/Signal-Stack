@@ -193,6 +193,17 @@ class SystemSetting(SQLModel, table=True):
     updated_at: datetime = Field(default_factory=utcnow)
 
 
+class ReassessmentRecord(SQLModel, table=True):
+    __tablename__ = "reassessment_records"
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    company_id: int = Field(foreign_key="companies.id", index=True)
+    pivot_context: str
+    summary: str
+    diff_json: str  # JSON serialization of kept, demoted, newly_suggested
+    created_at: datetime = Field(default_factory=utcnow)
+
+
 class LLMCache(SQLModel, table=True):
     __tablename__ = "llm_cache"
 

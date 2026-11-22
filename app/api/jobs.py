@@ -1,5 +1,6 @@
 from typing import List, Dict, Any, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, BackgroundTasks
+from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from app.core import db
@@ -138,3 +139,34 @@ def get_audit_report(
         "content": report.content,
         "created_at": report.created_at.isoformat() if report.created_at else None,
     }
+
+
+class SettingPayload(BaseModel):
+    key: str
+    value: str
+    description: Optional[str] = None
+
+
+@router.get("/system-settings")
+def get_all_settings(session: Session = Depends(db.get_session)) -> Dict[str, Any]:
+    """Retrieve all configurable system settings."""
+    from app.models.entities import SystemSetting
+    from app.core.config import settings as cfg
+    rows = session.exec(select(SystemSetting)).all()
+    results = {
+        "timezone": cfg.SCHEDULER_TIMEZONE,
+        "weekly_schedule": cfg.WEEKLY_SCHEDULE_CRON,
+        "monthly_schedule": cfg.MONTHLY_SCHEDULE_CRON,
+        "crawl_delay": str(cfg.CRAWL_DELAY_SECONDS),
+    }
+    for r in rows:
+        results[r.key] = r.value
+    return results
+
+
+@router.post("/system-settings")
+def update_system_setting(payload: SettingPayload, session: Session = Depends(db.get_session)):
+    """Update or create a system setting."""
+    from app.core.db import set_setting
+    row = set_setting(payload.key, payload.value, payload.description)
+    return {"status": "success", "key": row.key, "value": row.value}

@@ -1,0 +1,101 @@
+{
+  "company_id": 1,
+  "company_name": "Meet University",
+  "pivot_context": "Pivot to focus on study-abroad in Germany",
+  "summary": "### Strategic Intelligence Portfolio Reassessment \u2014 Meet University\n**Context Update**: *\"Pivot to focus on study-abroad in Germany\"*\n**Reassessment Date**: `2026-11-22 14:06 UTC`\n\n#### Executive Summary: What Changed & Why\nFollowing leadership's strategic refocus on **\"Pivot to focus on study-abroad in Germany\"**, Signal Stack executed an autonomous portfolio reassessment:\n- **Sources Kept (2)**: Retained all foundational cross-border intelligence feeds and proprietary internal objection data that maintain structural relevance across international admissions.\n- **Sources Demoted / Pruned (1)**: De-prioritized and marked as rejected sources that were narrowly tailored to legacy or unaligned geographies (such as country-specific immigration rules no longer pertinent to the new target market) to eliminate incoming noise.\n- **Newly Suggested Sources (6)**: Ingested and scored specialized destination bodies, centralized university portals (e.g. DAAD, Uni-Assist), and local applicant hubs to immediately monitor the new strategic surface area.\n",
+  "kept_count": 2,
+  "demoted_count": 1,
+  "newly_suggested_count": 6,
+  "kept": [
+    {
+      "source_id": 1,
+      "name": "Rival Admissions Global",
+      "url": "https://rivaladmissions.com/feed",
+      "category": "competitors",
+      "status": "approved",
+      "previous_status": "approved",
+      "reason": "Kept: Cross-border platform with global/international student mobility coverage applicable to Pivot to focus on study-abroad in Germany.",
+      "scores": "S:0.00 R:0.00 C:0.92"
+    },
+    {
+      "source_id": 3,
+      "name": "Internal File: test_sales_objections_sample.csv",
+      "url": "internal://meetuniversity.com/uploads/test_sales_objections_sample.csv",
+      "category": "internal",
+      "status": "approved",
+      "previous_status": "approved",
+      "reason": "Kept: First-party internal sales records, deal histories, and customer objection data remain critical baseline intelligence.",
+      "scores": "S:0.99 R:0.95 C:0.98"
+    }
+  ],
+  "demoted_or_rejected": [
+    {
+      "source_id": 2,
+      "name": "UK Home Office Student Visa Policy",
+      "url": "https://homeoffice.gov.uk/visa-updates",
+      "category": "market",
+      "status": "rejected",
+      "previous_status": "approved",
+      "demotion_reason": "Demoted / Rejected: Source is regionally concentrated on UK regulations, no longer directly relevant to the strategic pivot toward Germany.",
+      "scores": "S:0.35 R:0.00 C:0.98"
+    }
+  ],
+  "newly_suggested": [
+    {
+      "source_id": 4,
+      "name": "DAAD \u2014 German Academic Exchange Service",
+      "url": "https://www.daad.de/en/study-and-research-in-germany/",
+      "category": "market",
+      "status": "suggested",
+      "reason": "Newly suggested: Premier official German federal agency for international student admissions, scholarships, and university degree recognition.",
+      "scores": "S:0.98 R:0.95 C:0.99"
+    },
+    {
+      "source_id": 5,
+      "name": "Uni-Assist e.V. \u2014 University Application Portal",
+      "url": "https://www.uni-assist.de/en/",
+      "category": "market",
+      "status": "suggested",
+      "reason": "Newly suggested: Centralized evaluation agency processing international student applications for over 180 German higher education institutions.",
+      "scores": "S:0.96 R:0.92 C:0.98"
+    },
+    {
+      "source_id": 6,
+      "name": "Make it in Germany \u2014 Federal Government Portal",
+      "url": "https://www.make-it-in-germany.com/en/study-training/studies-in-germany",
+      "category": "market",
+      "status": "suggested",
+      "reason": "Newly suggested: Official German government portal detailing visa, blocked account, and post-study work regulations.",
+      "scores": "S:0.95 R:0.94 C:0.99"
+    },
+    {
+      "source_id": 7,
+      "name": "All-in-One AI Study Tool - Free Homework Help, Not",
+      "url": "https://studyx.ai/",
+      "category": "market",
+      "status": "suggested",
+      "reason": "Newly suggested following pivot to 'Pivot to focus on study-abroad in Germany': Provides verified updates on All-in-One AI Study Tool - Free Homework Help, Notes & Quiz .",
+      "scores": "S:0.90 R:0.88 C:0.92"
+    },
+    {
+      "source_id": 8,
+      "name": "Studley AI Study Tool \u2013 Ace Your Exams & Crush You",
+      "url": "https://www.studley.ai/",
+      "category": "market",
+      "status": "suggested",
+      "reason": "Newly suggested following pivot to 'Pivot to focus on study-abroad in Germany': Provides verified updates on Studley AI Study Tool \u2013 Ace Your Exams & Crush Your Homework.",
+      "scores": "S:0.90 R:0.88 C:0.92"
+    },
+    {
+      "source_id": 9,
+      "name": "Study & Revision Notes, Past Exam Papers, Quizzes ",
+      "url": "https://simplestudy.com/",
+      "category": "market",
+      "status": "suggested",
+      "reason": "Newly suggested following pivot to 'Pivot to focus on study-abroad in Germany': Provides verified updates on Study & Revision Notes, Past Exam Papers, Quizzes & Exam Pre.",
+      "scores": "S:0.90 R:0.88 C:0.92"
+    }
+  ],
+  "audit_report_id": 2,
+  "reassessment_id": 1
+}

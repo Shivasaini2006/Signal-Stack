@@ -1,5 +1,6 @@
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Depends, Query
+from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from app.core.db import get_session
@@ -78,3 +79,54 @@ def reject_source(source_id: int, session: Session = Depends(get_session)):
     session.commit()
     session.refresh(source)
     return source
+
+
+class SourceCreatePayload(BaseModel):
+    name: str
+    url: str
+    category: str = "competitors"
+    reason: str = "Manually added strategic source."
+    specific_score: float = 0.85
+    recent_score: float = 0.85
+    credible_score: float = 0.85
+
+
+@router.post("/companies/{company_id}/sources", response_model=Source)
+def create_custom_source(
+    company_id: int,
+    payload: SourceCreatePayload,
+    session: Session = Depends(get_session),
+):
+    """Manually register a new source for monitoring."""
+    company = session.get(Company, company_id)
+    if not company:
+        raise HTTPException(status_code=404, detail="Company not found")
+
+    source = Source(
+        company_id=company_id,
+        name=payload.name,
+        url=payload.url,
+        category=payload.category,
+        reason=payload.reason,
+        specific_score=payload.specific_score,
+        recent_score=payload.recent_score,
+        credible_score=payload.credible_score,
+        status="approved",
+        health="ok",
+    )
+    session.add(source)
+    session.commit()
+    session.refresh(source)
+    return source
+
+
+@router.delete("/sources/{source_id}")
+def delete_source(source_id: int, session: Session = Depends(get_session)):
+    """Delete / remove a source from monitoring."""
+    source = session.get(Source, source_id)
+    if not source:
+        raise HTTPException(status_code=404, detail="Source not found")
+
+    session.delete(source)
+    session.commit()
+    return {"status": "success", "message": f"Source #{source_id} removed."}

@@ -86,8 +86,76 @@ uvicorn app.main:app --reload --port 8000
 ```bash
 streamlit run ui/app.py
 ```
+The Streamlit UI provides 9 dedicated pages:
+1. **Company Setup**: Register company & run autonomous initial web research.
+2. **Profile (Editable)**: Inspect and edit facts vs assumptions across dimensions.
+3. **Interview**: Adaptive 10-question executive interview with skip & thread follow-ups.
+4. **Signal Stack**: 4-tab strategic landscape (`competitors`, `customers`, `market`, `internal`).
+5. **Source Manager**: Health metrics, approval/rejection, duplicate detection, and manual add.
+6. **Intelligence Feed**: Tri-factor ranked signals with dynamic multi-criteria filters.
+7. **Monday Brief**: 10-section strategic intelligence brief with downloadable MD/HTML.
+8. **Settings**: Timezone, briefing schedule, and autonomous job frequencies.
+9. **Jobs**: Live job logs, failure inspection, and manual weekly/monthly triggers.
 
 ---
 
-## 📊 Rate Limits & Free Tier Architecture
-See [`docs/COSTS.md`](file:///c:/Users/SHIVA/OneDrive/Desktop/project1/Signal-Stack/docs/COSTS.md) for full accounting of free quotas, backoff intervals, and token caching strategies.
+## 🧪 Multi-Company Demonstration Runner
+
+To execute the entire autonomous strategic intelligence pipeline across three distinct companies and industries (MeetUniversity, Postman, Monzo) and verify acceptance targets:
+
+```bash
+python scripts/run_demo.py
+```
+
+### Custom Company Override
+You can also specify your own target companies via command-line flags:
+```bash
+python scripts/run_demo.py --c2-name "Supabase" --c2-url "https://supabase.com" --c2-industry "Cloud Database Infrastructure" --c3-name "Snyk" --c3-url "https://snyk.io" --c3-industry "Developer Security & DevSecOps"
+```
+
+### Verified Targets Per Company:
+- **$\ge 20$ Sources** discovered and categorized
+- **5–10 Competitors** profiled with positioning and pricing
+- **$\ge 30$ Intelligence Records** (crawled documents + extracted signals)
+- **$\ge 1$ 10-Section Monday Brief** synthesized and verified
+
+Generated deliverables are saved to `reports/`:
+- `reports/meet_university_monday_brief.md` & `.html`
+- `reports/postman_monday_brief.md` & `.html`
+- `reports/monzo_monday_brief.md` & `.html`
+- `reports/demo_execution_summary.json` & `.md`
+
+---
+
+## 🧪 CLI Automation & Maintenance Tools
+
+### Run Weekly Autonomous Pipeline Locally
+```bash
+python scripts/run_weekly.py --company-id 1
+```
+
+### Run Monthly Strategic Source Audit
+```bash
+python scripts/run_monthly_audit.py --company-id 1
+```
+
+### Strategic Reassessment Demo (e.g. Germany Study-Abroad Pivot)
+```bash
+python scripts/demo_reassessment.py
+```
+*Outputs diff analysis (kept, demoted, and newly suggested sources with plain-language summaries) and saves evidence to `data/demo_evidence_meetuniversity_germany_pivot.json` and `data/demo_evidence_meetuniversity_germany_pivot.md`.*
+
+### Run Automated Test Suite (Zero External Token Consumption)
+```bash
+python -m pytest -v
+```
+*All 47 unit and integration tests execute with zero network calls and zero token burn.*
+
+---
+
+## 📚 Technical Documentation & Specifications
+
+- **[Technical Specification (`docs/TECHNICAL.md`)](docs/TECHNICAL.md)**: Deep-dive architectural specification covering system design, dynamic source discovery, crawler politeness, tri-factor algorithmic ranking, AI analysis & verbatim verification, job scheduling, and fault tolerance.
+- **[Free-Tier Quotas & Costs (`docs/COSTS.md`)](docs/COSTS.md)**: Full accounting of free-tier quotas (Gemini, Groq, DuckDuckGo, SQLite, GitHub Actions), token economics, and defensive prompt-hash caching.
+- **[Test Evidence Dossier (`docs/TEST_EVIDENCE.md`)](docs/TEST_EVIDENCE.md)**: Pytest execution logs, hard-rule grep test evidence, hallucination rejection tests, and multi-company demonstration scorecard.
+- **[Project Rules & Constraints (`AGENTS.md`)](AGENTS.md)**: Non-negotiable architectural laws and engineering standards.

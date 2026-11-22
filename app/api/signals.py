@@ -36,6 +36,7 @@ def analyze_company_documents(company_id: int, session: Session = Depends(get_se
 @router.get("/companies/{company_id}/signals", response_model=List[Signal])
 def list_company_signals(
     company_id: int,
+    category: Optional[str] = Query(None, description="Filter by category: competitors|customers|market|internal"),
     type: Optional[str] = Query(None, description="'opportunity' | 'threat' | 'neutral'"),
     urgency: Optional[str] = Query(None, description="'low' | 'medium' | 'high' | 'critical'"),
     verification_status: Optional[str] = Query(None, description="'verified' | 'reported' | 'unverified'"),
@@ -56,6 +57,8 @@ def list_company_signals(
         .limit(limit)
     )
 
+    if category:
+        query = query.where(Signal.category == category)
     if type:
         query = query.where(Signal.type == type)
     if urgency:

@@ -1,0 +1,47 @@
+[
+  {
+    "company_id": 1,
+    "name": "Meet University",
+    "industry": "EdTech & International Higher Education",
+    "sources_count": 23,
+    "competitors_count": 7,
+    "documents_count": 1,
+    "signals_count": 37,
+    "total_records": 38,
+    "briefs_count": 5,
+    "actions_count": 1,
+    "md_path": "C:\\Users\\SHIVA\\OneDrive\\Desktop\\project1\\Signal-Stack\\reports\\meet_university_monday_brief.md",
+    "html_path": "C:\\Users\\SHIVA\\OneDrive\\Desktop\\project1\\Signal-Stack\\reports\\meet_university_monday_brief.html",
+    "verification_valid": true
+  },
+  {
+    "company_id": 2,
+    "name": "Postman",
+    "industry": "API Developer Tools & Cloud SaaS",
+    "sources_count": 25,
+    "competitors_count": 6,
+    "documents_count": 11,
+    "signals_count": 23,
+    "total_records": 34,
+    "briefs_count": 2,
+    "actions_count": 1,
+    "md_path": "C:\\Users\\SHIVA\\OneDrive\\Desktop\\project1\\Signal-Stack\\reports\\postman_monday_brief.md",
+    "html_path": "C:\\Users\\SHIVA\\OneDrive\\Desktop\\project1\\Signal-Stack\\reports\\postman_monday_brief.html",
+    "verification_valid": true
+  },
+  {
+    "company_id": 3,
+    "name": "Monzo",
+    "industry": "FinTech & Digital Banking",
+    "sources_count": 26,
+    "competitors_count": 5,
+    "documents_count": 11,
+    "signals_count": 28,
+    "total_records": 39,
+    "briefs_count": 2,
+    "actions_count": 1,
+    "md_path": "C:\\Users\\SHIVA\\OneDrive\\Desktop\\project1\\Signal-Stack\\reports\\monzo_monday_brief.md",
+    "html_path": "C:\\Users\\SHIVA\\OneDrive\\Desktop\\project1\\Signal-Stack\\reports\\monzo_monday_brief.html",
+    "verification_valid": true
+  }
+]
